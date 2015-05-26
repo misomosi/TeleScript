@@ -6,7 +6,7 @@
 #include <time.h>
 #include <string>
 
-typedef char[48] ipAddr_t;
+//typedef char[48] ipAddr_t;
 
 // =================================================================================
 // Client descriptor
@@ -14,8 +14,8 @@ typedef char[48] ipAddr_t;
 struct Client
 {
     char* sName;
-    char[64] sSessionID;
-    ipAddr_t remoteAddress;
+    char sSessionID [64];
+    char remoteAddress[48];
     time_t tLastMessage;
 };
 
@@ -39,18 +39,27 @@ class Server
 public:
     Server();
     ~Server();
-    
-    // Allow connections
+   
     void Init();
+
+	// allow client connections
+	void SetEnabled(bool enabled);
+	void Open();
     void Close();
+
+	// Handles any outstanding events (perhaps we should do this from a separate thread?)
+	void PollThread();
     
     void LoadServerIni();
     ServerConfig* GetConfig() {return &m_sConfig;}
 private:
-    bool m_bActive;
-    int m_ConnectedClients
+    bool m_bEnabled; // TODO: this might need a mutex
+	int m_ConnectedClients;
     ServerConfig m_sConfig;
     mg_server *m_mgServer;
+	void* m_pollThread;
+	// function for processing connection requests and events
+	static int event_handler(struct mg_connection *conn, enum mg_event ev);
 };
 
 // =================================================================================

@@ -3,6 +3,7 @@
 // =================================================================================
 #include "Includes.h"
 #include "GTALua.h"
+#include "Server.h"
 #include "Memory/Memory.h"
 #include "lua/Lua.h"
 
@@ -10,6 +11,7 @@
 // Global 
 // =================================================================================
 GTALua* g_pGTALua = NULL;
+Server* g_pServer = NULL;
 
 // =================================================================================
 // Init 
@@ -18,7 +20,9 @@ void Init()
 {
 	// Init
 	g_pGTALua = new GTALua();
+	g_pServer = new Server();
 	g_pGTALua->Init();
+	g_pServer->Init();
 }
 
 // =================================================================================
@@ -27,7 +31,7 @@ void Init()
 void ThreadInit()
 {
 	// Wait for GTALua
-	while (g_pGTALua == NULL)
+	while (g_pGTALua == NULL || g_pServer == NULL)
 		Sleep(200);
 
 	// Update
@@ -47,10 +51,19 @@ BOOL __stdcall DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
 	}
 
 	// Cleanup
-	if (dwReason == DLL_PROCESS_DETACH && g_pGTALua != NULL)
+	if (dwReason == DLL_PROCESS_DETACH)
 	{
-		delete g_pGTALua;
-		g_pGTALua = NULL;
+		if (g_pGTALua != NULL)
+		{
+			delete g_pGTALua;
+			g_pGTALua = NULL;
+		}
+
+		if (g_pServer != NULL)
+		{
+			delete g_pServer;
+			g_pServer = NULL;
+		}
 	}
 
 	// Success

@@ -33,7 +33,7 @@ void GTALua::ProcessConsoleInput()
 
 	// Lock
 	lua->GetMutex()->Lock();
-
+	
 	// Lua: args table
 	luabind::object l_args = luabind::newtable(lua->State());
 	int l_index = 1;

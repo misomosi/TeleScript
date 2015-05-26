@@ -647,7 +647,7 @@ static int ns_resolve2(const char *host, struct in_addr *ina) {
 // Return > 0 (IP address length) on success.
 int ns_resolve(const char *host, char *buf, size_t n) {
   struct in_addr ad;
-  return ns_resolve2(host, &ad) ? snprintf(buf, n, "%s", inet_ntoa(ad)) : 0;
+  return ns_resolve2(host, &ad) ? inet_ntop(AF_INET, &ad, buf, n) : 0;
 }
 
 // Address format: [PROTO://][IP_ADDRESS:]PORT[:CERT][:CA_CERT]
@@ -866,9 +866,6 @@ void ns_sock_to_str(sock_t sock, char *buf, size_t len, int flags) {
       inet_ntop(sa.sa.sa_family, sa.sa.sa_family == AF_INET ?
                 (void *) &sa.sin.sin_addr :
                 (void *) &sa.sin6.sin6_addr, buf, len);
-#elif defined(_WIN32)
-      // Only Windoze Vista (and newer) have inet_ntop()
-      strncpy(buf, inet_ntoa(sa.sin.sin_addr), len);
 #else
       inet_ntop(sa.sa.sa_family, (void *) &sa.sin.sin_addr, buf,(socklen_t)len);
 #endif
