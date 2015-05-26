@@ -4,5 +4,6 @@ build/ASIAddon.*
 build/GTALua/addons/police*
 build/GTALua/addons/test*
 Debug*
+Release*
 GTALua.opensdf
 GTALua.sdf
