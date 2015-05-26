@@ -4,3 +4,5 @@ build/ASIAddon.*
 build/GTALua/addons/police*
 build/GTALua/addons/test*
 Debug*
+GTALua.opensdf
+GTALua.sdf
