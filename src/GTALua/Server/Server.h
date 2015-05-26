@@ -4,6 +4,7 @@
 #include "Mongoose/mongoose.h"
 #include <vector>
 #include <time.h>
+#include <string>
 
 typedef char[48] ipAddr_t;
 
@@ -23,12 +24,11 @@ struct Client
 // =================================================================================
 struct ServerConfig
 {
+    bool bEnabled;
     int iPort;
     bool bUsePassword;
-    char* sPassword;
-    bool bDefaultDeny;
-    std::vector<ipAddr_t> m_denyList;
-    std::vector<ipAddr_t> m_allowList;
+    std::string sPassword;
+    std::string sACL;
 };
 
 // =================================================================================

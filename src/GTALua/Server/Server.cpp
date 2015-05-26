@@ -21,8 +21,3 @@ void Server::Close()
 {
     
 }
-
-void Server::LoadServerIni()
-{
-    
-}
