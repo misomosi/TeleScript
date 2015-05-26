@@ -331,5 +331,8 @@
     <ClCompile Include="src\GTALua\Configuration\ServerINI.cpp">
       <Filter>Quelldateien\Configuration</Filter>
     </ClCompile>
+    <ClCompile Include="src\GTALua\ScriptBinds\LB_Server.cpp">
+      <Filter>Quelldateien\ScriptBinds</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

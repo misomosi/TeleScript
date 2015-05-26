@@ -58,6 +58,7 @@
     <ClCompile Include="src\GTALua\ScriptBinds\LB_Memory.cpp" />
     <ClCompile Include="src\GTALua\ScriptBinds\LB_ScriptHookV.cpp" />
     <ClCompile Include="src\GTALua\ScriptBinds\LB_ScriptThread.cpp" />
+    <ClCompile Include="src\GTALua\ScriptBinds\LB_Server.cpp" />
     <ClCompile Include="src\GTALua\ScriptBinds\LB_Types.cpp" />
     <ClCompile Include="src\GTALua\ScriptBinds\LB_Natives.cpp" />
     <ClCompile Include="src\GTALua\ScriptEngine\Natives.cpp" />

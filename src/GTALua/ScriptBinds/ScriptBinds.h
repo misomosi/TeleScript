@@ -31,6 +31,11 @@ namespace ScriptBinds
 		void Bind();
 	}
 
+	namespace Server
+	{
+		void Bind();
+	}
+
 	namespace ScriptThread
 	{
 		// ScriptThread

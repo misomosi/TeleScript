@@ -42,6 +42,8 @@ public:
    
     void Init();
 
+	bool IsActive() { return m_bActive; }
+
 	// allow client connections
 	void SetEnabled(bool enabled);
 	void Open();
@@ -54,6 +56,7 @@ public:
     ServerConfig* GetConfig() {return &m_sConfig;}
 private:
     bool m_bEnabled; // TODO: this might need a mutex
+	bool m_bActive; // Is the server actually running?
 	int m_ConnectedClients;
     ServerConfig m_sConfig;
     mg_server *m_mgServer;

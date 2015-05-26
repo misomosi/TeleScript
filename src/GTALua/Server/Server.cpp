@@ -62,12 +62,14 @@ void Server::PollThread()
 	printf("[Server] initialized.\n");
 
 	// Polling loop. Server can be disabled here, or from another thread provided we've syncronized on m_bEnabled.
+	m_bActive = true;
 	while (m_bEnabled)
 	{
 		mg_poll_server(m_mgServer, 1000);
 	}
 	
 	// Teardown phase
+	m_bActive = false;
 	if (m_mgServer)
 	{
 		mg_destroy_server(&m_mgServer);

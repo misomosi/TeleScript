@@ -58,3 +58,14 @@ function console.cmd_exec(expression)
 	end
 end
 console.RegisterCommand("exec", console.cmd_exec)
+
+-- Manage the server state
+function console.cmd_server(arg)
+	-- Syntax
+	if type(arg) ~= "string" or not(arg == "start" or arg == "stop" or arg == "status") then
+		print("Syntax: server [Start|Stop|Status]")
+		return
+	end
+	print(server[arg]())
+end
+console.RegisterCommand("server", console.cmd_server)
