@@ -12,7 +12,6 @@
 int ini_server_parser(void* pCustom, const char* sSection, const char* sName, const char* sValue)
 {
     // Server
-	
 	if (_stricmp(sSection, "Server") == 0)
     {
         ServerConfig *config = (ServerConfig*) pCustom;
