@@ -39,3 +39,22 @@ function console.cmd_unload_addon(name)
 	print("")
 end
 console.RegisterCommand("unload_addon", console.cmd_unload_addon)
+
+-- Immediate execute lua code
+function console.cmd_exec(expression)
+	-- Syntax
+	if type(expression) ~= "string" then
+		print("Syntax: exec \"[lua expression]\"")
+		return
+	end
+
+	functor, e = loadstring(expression)
+	if functor then
+		functor()
+	else
+		-- Display the error
+		print("Error running exec:")
+		print(e)
+	end
+end
+console.RegisterCommand("exec", console.cmd_exec)
