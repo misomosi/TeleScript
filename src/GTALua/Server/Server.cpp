@@ -80,7 +80,10 @@ void Server::Init()
 {
 	// Server config section from GTALua.ini
 	LoadServerIni();
+}
 
+void Server::ProperInit()
+{
 	SetEnabled(m_sConfig.bEnabled);
 }
 

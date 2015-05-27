@@ -2,7 +2,6 @@
 include("modules/event.lua")
 include("modules/addon.lua")
 include("modules/scripthookv.lua")
-include("modules/server.lua")
 include("modules/console/console.lua")
 
 -- Extensions

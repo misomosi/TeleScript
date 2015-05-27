@@ -41,6 +41,7 @@ public:
     ~Server();
    
     void Init();
+	void ProperInit(); // Function called after all external libraries are loaded
 
 	bool IsActive() { return m_bActive; }
 

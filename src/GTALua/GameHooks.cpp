@@ -3,6 +3,7 @@
 // =================================================================================
 #include "Includes.h"
 #include "GTALua.h"
+#include "Server.h"
 #include "Memory/Memory.h"
 #include "ScriptEngine/ScriptEngine.h"
 #include "lua/Lua.h"
@@ -93,6 +94,7 @@ bool ShowWindow_Hook(HWND hWnd, int nCmdShow)
 		// This gets called shortly before the game window is created
 		// At this point, the game exe has been unpacked and patching is safe
 		g_pGTALua->ProperInit();
+		g_pServer->ProperInit();
 
 		// Prevent hiding the console window
 		return true;
