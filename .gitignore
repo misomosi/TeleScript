@@ -7,3 +7,4 @@ Debug*
 Release*
 GTALua.opensdf
 GTALua.sdf
+*.DS_Store
