@@ -6,21 +6,83 @@
 </head>
 <body>
     <div id="wrapper">
-        Console Log
+        <h1><b>Console Log</b></h1>
         <div id="log">
-            log text.
         </div>
-        <form name="command-input" action="">
+        <form id="commandform" name="command-input" action="">
             <input name="command" type="text" id="command"/>
-            <input name="Submit" type="submit"
-                
+            <input name="Submit" type="submit"/>
+            <button id="clear" type="button">Clear</button>
         </form>
     </div>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
-        // jQuery Document
+        var consoleLog;
+        var socket;
+        var uri = "ws://"+window.location.host+"/console";
+        
+        function onOpen(evt)
+        {
+            logMessage("clientstatus", "Opened connection to host. " + Date());
+        }
+    
+        function onClose(evt)
+        {
+            logMessage("clientstatus", "Host connection closed. " + Date());
+        }
+    
+        function onMessage(evt)
+        {
+            var obj = JSON.parse(evt.data);
+            if(obj.type == "MESSAGE")
+            {
+                logMessage("message",obj.msg);
+            } else
+            {
+                logMessage("error",obj.msg);
+            }
+        }
+    
+        function onError(evt)
+        {
+            logMessage("clienterror", "ERROR: "+evt.data);
+        }
+    
+        function logMessage(msgClass, msg)
+        {
+            var line = document.createElement("p");
+            line.className = msgClass;
+            line.innerHTML = msg;
+            consoleLog.appendChild(line);
+        }
+    
+        function clearLog()
+        {
+            while (consoleLog.childElementCount > 0)
+            {
+                consoleLog.removeChild(consoleLog.lastChild);
+            }
+        }
+    
+        /* Submit event handler for the command form */
+        function submitCommand( event )
+        {
+            var command = $("#command").val();
+            logMessage("sent", command);
+            $("#command").val("");
+            socket.send(command);
+            event.preventDefault();
+        }
+    
         $(document).ready(function(){
-                          
+                          consoleLog = $("#log")[0];
+                          socket = new WebSocket(uri);
+                          socket.onopen = onOpen;
+                          socket.onclose = onClose;
+                          socket.onmessage = onMessage;
+                          socket.onerror = onError;
+                          $("#clear").click(clearLog);
+                          $("#commandform").submit(submitCommand);
         });
     </script>
 </body>

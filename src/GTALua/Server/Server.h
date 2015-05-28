@@ -64,6 +64,15 @@ private:
 	void* m_pollThread;
 	// function for processing connection requests and events
 	static int event_handler(struct mg_connection *conn, enum mg_event ev);
+    
+    // Handle websocket requests
+    static int ServeWebsocketRequest(struct mg_connection *conn);
+    
+    // Handle REST requests
+    static int ServeRESTRequest(struct mg_connection *conn);
+    
+    // Generate dynamic html content (TODO: need to find a templates library)
+    static int ServeTemplateHTMLRequest(struct mg_connection *conn);
 };
 
 // =================================================================================
