@@ -64,6 +64,14 @@ namespace ScriptBinds
 			void Kill();
 			void Reset();
 
+			// Server functionality
+			// Websockets
+			void RegisterWS_URI(const string& uri);
+			// Calls WS_OnConnect, WS_OnDisconnect, WS_OnMessage
+
+			// REST calls
+			void RegisterREST_URI(const string& uri, const string& method, const string& callback);
+
 			// Main Thread
 			luabind::object m_lThreadList;
 			bool m_bRunsOnMainThread;

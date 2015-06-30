@@ -27,6 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LB_WebSocket.cpp" />
     <ClCompile Include="src\GTALua\API.cpp" />
     <ClCompile Include="src\GTALua\Configuration\GTALuaINI.cpp" />
     <ClCompile Include="src\GTALua\Configuration\NativeCallLayoutsINI.cpp" />
@@ -39,6 +40,11 @@
     <ClCompile Include="src\GTALua\GameEvents\OnPedCreated.cpp" />
     <ClCompile Include="src\GTALua\GameEvents\OnVehicleCreated.cpp" />
     <ClCompile Include="src\GTALua\GameHooks.cpp" />
+    <ClCompile Include="src\GTALua\lua-cjson\dtoa.cpp" />
+    <ClCompile Include="src\GTALua\lua-cjson\fpconv.cpp" />
+    <ClCompile Include="src\GTALua\lua-cjson\g_fmt.cpp" />
+    <ClCompile Include="src\GTALua\lua-cjson\lua_cjson.cpp" />
+    <ClCompile Include="src\GTALua\lua-cjson\strbuf.cpp" />
     <ClCompile Include="src\GTALua\lua\GeneralFunctions.cpp" />
     <ClCompile Include="src\GTALua\lua\luamanager\LuaManager.cpp" />
     <ClCompile Include="src\GTALua\lua\luamanager\LuaManager_Debug.cpp" />
@@ -65,16 +71,23 @@
     <ClCompile Include="src\GTALua\ScriptEngine\ScriptHookV.cpp" />
     <ClCompile Include="src\GTALua\Server\EventHandler.cpp" />
     <ClCompile Include="src\GTALua\Server\Mongoose\mongoose.c" />
+    <ClCompile Include="src\GTALua\Server\REST.cpp" />
     <ClCompile Include="src\GTALua\Server\Server.cpp" />
+    <ClCompile Include="src\GTALua\Server\TemplateHTML.cpp" />
+    <ClCompile Include="src\GTALua\Server\Websocket.cpp" />
     <ClCompile Include="src\GTALua\thirdparty\inih\ini.c" />
     <ClCompile Include="src\GTALua\UTIL\IniFile.cpp" />
     <ClCompile Include="src\GTALua\UTIL\Mutex.cpp" />
     <ClCompile Include="src\GTALua\UTIL\UTIL.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientSocket.h" />
     <ClInclude Include="src\GTALua\GameEvents\GameEvents.h" />
     <ClInclude Include="src\GTALua\GTALua.h" />
     <ClInclude Include="src\GTALua\Includes.h" />
+    <ClInclude Include="src\GTALua\lua-cjson\dtoa_config.h" />
+    <ClInclude Include="src\GTALua\lua-cjson\fpconv.h" />
+    <ClInclude Include="src\GTALua\lua-cjson\strbuf.h" />
     <ClInclude Include="src\GTALua\lua\ClassWrappers.h" />
     <ClInclude Include="src\GTALua\lua\GeneralFunctions.h" />
     <ClInclude Include="src\GTALua\lua\Lua.h" />
@@ -283,7 +296,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>src/GTALua/;src/GTALua/lua/;src/GTALua/lua/lua/;src/GTALua/Server/</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NS_ENABLE_GETADDRINFO;NS_ENABLE_DEBUG;MONGOOSE_ENABLE_THREADS;GTA_LUA_TEST_EXE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NS_ENABLE_GETADDRINFO;MONGOOSE_ENABLE_THREADS;GTA_LUA_TEST_EXE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

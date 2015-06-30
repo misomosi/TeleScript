@@ -1,12 +1,16 @@
 // ====================================================================================================
 // Lua Includes
 // ====================================================================================================
+#ifdef __cplusplus
 extern "C"
 {
+#endif
 	#include "lua/lua.h"
 	#include "lua/lualib.h"
 	#include "lua/lauxlib.h"
+#ifdef __cplusplus
 }
+#endif
 #include "luabind/luabind.hpp"
 
 #pragma comment(lib,"src/GTALua/lua/lib/lua.lib")

@@ -84,6 +84,7 @@ void _main()
 
 	// Proper Init
 	g_pGTALua->ProperInit();
+	g_pServer->ProperInit();
 
 	// Mark as initialized
 	GameMemory::ScriptEngineInitialized = true;
@@ -95,11 +96,11 @@ void _main()
 	lua->Pop(2);
 
 	// Load
-	lua->GetGlobal("addon");
-	lua->GetField("Load");
-	lua->PushString("test_1");
-	lua->ProtectedCall(1);
-	lua->Pop(2);
+	//lua->GetGlobal("addon");
+	//lua->GetField("Load");
+	//lua->PushString("test_1");
+	//lua->ProtectedCall(1);
+	//lua->Pop(2);
 
 	// Thread
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Lua_StartThread, 0, 0, 0);

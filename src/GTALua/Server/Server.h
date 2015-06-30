@@ -67,6 +67,8 @@ private:
     
     // Handle websocket requests
     static int ServeWebsocketRequest(struct mg_connection *conn);
+	static int OpenWebsocket(struct mg_connection *conn);
+	static int CloseWebsocket(struct mg_connection *conn);
     
     // Handle REST requests
     static int ServeRESTRequest(struct mg_connection *conn);

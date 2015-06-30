@@ -18,7 +18,7 @@ namespace LuaFunctions
 	namespace Autorefresh
 	{
 		class UpdateListener;
-		extern vector<string> vRegisteredDirectories;
+		extern std::vector<std::string> vRegisteredDirectories;
 		extern FW::FileWatcher* pFileWatcher;
 		extern UpdateListener* pListener;
 
@@ -28,6 +28,6 @@ namespace LuaFunctions
 		bool IsInitialized();
 		void Destroy();
 
-		void AddDirectory(string path);
+		void AddDirectory(std::string path);
 	}
 }

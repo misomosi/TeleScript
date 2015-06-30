@@ -12,6 +12,12 @@ int Server::event_handler(struct mg_connection *conn, enum mg_event ev)
         case MG_AUTH:
             return MG_TRUE; // For now, authorize all events
             break;
+
+		// Client is attempting to establish a websocket
+		case MG_WS_CONNECT:
+			return OpenWebsocket(conn);
+			break;
+
         // GET or PUT or POST or whatever request
         case MG_REQUEST:
         {
@@ -43,7 +49,13 @@ int Server::event_handler(struct mg_connection *conn, enum mg_event ev)
             break;
         // Connection close event
         case MG_CLOSE:
+			if (conn->is_websocket) {
+				return CloseWebsocket(conn);
+			}
             return MG_FALSE;
             break;
+		default:
+			return MG_FALSE;
+			break;
     }
 }

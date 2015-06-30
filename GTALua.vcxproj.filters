@@ -96,6 +96,12 @@
     <Filter Include="Headerdateien\Server\Mongoose">
       <UniqueIdentifier>{f4b8401a-d650-4daf-abc0-e1e926f3110b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\lua-cjson">
+      <UniqueIdentifier>{510b013f-7b96-4de4-b463-a293ad6f9800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\lua-cjson">
+      <UniqueIdentifier>{91d0d2ce-c82a-41d0-bfab-1e562647fe37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GTALua\GTALua.h">
@@ -201,6 +207,18 @@
       <Filter>Headerdateien\Server\Mongoose</Filter>
     </ClInclude>
     <ClInclude Include="src\GTALua\Server\Server.h">
+      <Filter>Headerdateien\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTALua\lua-cjson\dtoa_config.h">
+      <Filter>Headerdateien\lua-cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTALua\lua-cjson\fpconv.h">
+      <Filter>Headerdateien\lua-cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GTALua\lua-cjson\strbuf.h">
+      <Filter>Headerdateien\lua-cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocket.h">
       <Filter>Headerdateien\Server</Filter>
     </ClInclude>
   </ItemGroup>
@@ -332,6 +350,33 @@
       <Filter>Quelldateien\Configuration</Filter>
     </ClCompile>
     <ClCompile Include="src\GTALua\ScriptBinds\LB_Server.cpp">
+      <Filter>Quelldateien\ScriptBinds</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\Server\REST.cpp">
+      <Filter>Quelldateien\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\Server\TemplateHTML.cpp">
+      <Filter>Quelldateien\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\Server\Websocket.cpp">
+      <Filter>Quelldateien\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\lua-cjson\lua_cjson.cpp">
+      <Filter>Quelldateien\lua-cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\lua-cjson\strbuf.cpp">
+      <Filter>Quelldateien\lua-cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\lua-cjson\fpconv.cpp">
+      <Filter>Quelldateien\lua-cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\lua-cjson\g_fmt.cpp">
+      <Filter>Quelldateien\lua-cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GTALua\lua-cjson\dtoa.cpp">
+      <Filter>Quelldateien\lua-cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="LB_WebSocket.cpp">
       <Filter>Quelldateien\ScriptBinds</Filter>
     </ClCompile>
   </ItemGroup>
